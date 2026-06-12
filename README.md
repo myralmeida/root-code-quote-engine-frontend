@@ -1,36 +1,189 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Travel Insurance Quote Engine - Frontend
 
-## Getting Started
+Frontend desenvolvido em Next.js para o desafio técnico da Root Code.
 
-First, run the development server:
+## Demo
+
+Frontend publicado:
+
+https://root-code-quote-engine-frontend.vercel.app/
+
+Backend:
+
+https://root-code-quote-engine-ixgc.onrender.com
+
+---
+
+## Tecnologias
+
+* Next.js 16
+* React 19
+* TypeScript
+* Tailwind CSS
+* Zustand
+* Axios
+
+---
+
+## Funcionalidades
+
+### Formulário de Cotação
+
+Permite informar:
+
+* Destino
+* Data de início
+* Data de fim
+* Múltiplos viajantes
+* Adicionais por viajante
+
+### Resultado da Cotação
+
+Exibe:
+
+* Dias cobrados
+* Subtotal por viajante
+* Idade calculada
+* Adicionais aplicados
+* Avisos retornados pela API
+* Desconto de grupo
+* Total final
+
+---
+
+## Gerenciamento de Estado
+
+Foi utilizado Zustand para:
+
+* Armazenar a cotação atual
+* Controlar loading
+* Controlar erros
+* Centralizar comunicação entre componentes
+
+A escolha foi feita por simplicidade e baixo overhead para o tamanho do projeto.
+
+---
+
+## Estrutura
+
+```txt
+src/
+├── app
+├── components
+├── services
+├── store
+└── types
+```
+
+### Components
+
+* QuoteForm
+* TravelerForm
+* QuoteResult
+
+### Services
+
+* quote.service.ts
+
+Responsável pelas chamadas HTTP.
+
+### Store
+
+* quote.store.ts
+
+Responsável pelo estado global da aplicação.
+
+---
+
+## Experiência do Usuário
+
+Implementado:
+
+* Loading durante requisições
+* Tratamento de erros
+* Layout responsivo
+* Interface inspirada na identidade visual da Root Code
+
+---
+
+## Executando Localmente
+
+Instalar dependências:
+
+```bash
+npm install
+```
+
+Executar:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Aplicação:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+http://localhost:3001
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## Variáveis de Ambiente
 
-To learn more about Next.js, take a look at the following resources:
+```env
+NEXT_PUBLIC_API_URL=http://localhost:8000/api
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Produção:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```env
+NEXT_PUBLIC_API_URL=https://root-code-quote-engine-ixgc.onrender.com/api
+```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Decisões
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+O desafio tinha como foco principal:
+
+* Regras de negócio
+* Consumo da API
+* Exibição dos resultados
+
+Por isso priorizei:
+
+* Clareza
+* Organização
+* Responsividade
+* Fluxo completo da cotação
+
+em vez de investir tempo em bibliotecas visuais complexas ou padrões arquiteturais excessivos.
+
+---
+
+## Diferenciais Implementados
+
+Além dos requisitos obrigatórios:
+
+* Backend publicado em produção
+* Frontend publicado em produção
+* Docker no backend
+* Persistência em banco de dados
+* Endpoint de listagem de cotações
+* Responsividade
+* Estado global com Zustand
+
+---
+
+## Melhorias Futuras
+
+Caso houvesse mais tempo, implementaria:
+
+* Tela para histórico de cotações salvas
+* Consumo do endpoint de listagem
+* React Query para cache
+* Testes de interface
+* Filtros e busca
+* Dark mode
+* Internacionalização
+* Design System próprio
+
+A listagem de cotações foi implementada no backend como um diferencial, porém não foi consumida no frontend porque o foco do desafio estava concentrado no fluxo principal de cálculo e exibição da cotação.
